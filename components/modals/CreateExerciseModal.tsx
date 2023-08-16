@@ -50,12 +50,14 @@ const CreateExerciseModal = ({
             placeholder="Navn på øvelse"
             value={exerciseName}
             onChangeText={setExerciseName}
+            placeholderTextColor="#aaa" // Light gray color for the placeholder
           />
           <TextInput
             style={styles.input}
             placeholder="Beskrivelse"
             value={exerciseDescription}
             onChangeText={setExerciseDescription}
+            placeholderTextColor="#aaa" // Light gray color for the placeholder
           />
           <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
             <Text style={styles.saveButtonText}>Lagre</Text>

@@ -42,7 +42,7 @@ const HomeExerciseScreen = () => {
 
   return (
     <View style={styles.container}>
-      {showSuccessAnimation ? (
+      {/* {showSuccessAnimation ? (
         <View style={styles.lottieAnimationContainer}>
           <LottieView
             duration={3000} // 3 seconds
@@ -53,37 +53,37 @@ const HomeExerciseScreen = () => {
             source={require("../../assets/animations/successAnimation.json")}
           />
         </View>
-      ) : (
-        <>
-          <Text style={styles.title}>Hjemmeøvelser for psykose</Text>
-          <FlatList
-            data={exercises}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => handleExerciseToggle(item)}>
-                <View
-                  style={[styles.listItem, item.completed && styles.completed]}
-                >
-                  <Text style={styles.listItemTitle}>{item.name}</Text>
-                  <Text style={styles.listItemText}>{item.description}</Text>
-                </View>
-              </TouchableOpacity>
-            )}
-          />
-          <TouchableOpacity
-            style={styles.createButton}
-            onPress={() => setModalVisible(true)}
-          >
-            <Text style={styles.createButtonText}>Lag ny øvelse</Text>
-          </TouchableOpacity>
+      ) : ( */}
+      <>
+        <Text style={styles.title}>Hjemmeøvelser for psykose</Text>
+        <FlatList
+          data={exercises}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => handleExerciseToggle(item)}>
+              <View
+                style={[styles.listItem, item.completed && styles.completed]}
+              >
+                <Text style={styles.listItemTitle}>{item.name}</Text>
+                <Text style={styles.listItemText}>{item.description}</Text>
+              </View>
+            </TouchableOpacity>
+          )}
+        />
+        <TouchableOpacity
+          style={styles.createButton}
+          onPress={() => setModalVisible(true)}
+        >
+          <Text style={styles.createButtonText}>Lag ny øvelse</Text>
+        </TouchableOpacity>
 
-          <CreateExerciseModal
-            modalVisible={modalVisible}
-            setModalVisible={setModalVisible}
-            saveExercise={handleSaveExercise}
-          />
-        </>
-      )}
+        <CreateExerciseModal
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          saveExercise={handleSaveExercise}
+        />
+      </>
+      {/* )} */}
     </View>
   );
 };

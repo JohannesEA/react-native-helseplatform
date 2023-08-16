@@ -46,12 +46,14 @@ const CreateAppointmentModal = ({
             placeholder="Type avtale (e.g. Psykolog)"
             value={newAppointmentType}
             onChangeText={setNewAppointmentType}
+            placeholderTextColor="#aaa" // Light gray color for the placeholder
           />
           <TextInput
             style={styles.input}
             placeholder="Dato og tid (e.g. 15. august 2023, 10:00)"
             value={newAppointmentDatetime}
             onChangeText={setNewAppointmentDatetime}
+            placeholderTextColor="#aaa" // Light gray color for the placeholder
           />
           <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
             <Text style={styles.saveButtonText}>Lagre</Text>

@@ -15,7 +15,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.johannesea.HelseOversikt"
     },
     "android": {
       "adaptiveIcon": {
@@ -25,6 +26,18 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8d50009c-6d60-46d5-b0cc-f27323c65299"
+      }
+    },
+    "owner": "johannesea",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/8d50009c-6d60-46d5-b0cc-f27323c65299"
     }
   }
 }

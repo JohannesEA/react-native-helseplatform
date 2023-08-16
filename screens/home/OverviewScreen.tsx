@@ -25,8 +25,12 @@ const OverviewScreen = ({ navigation }: any) => {
     exercisesCompleted: exercises.filter((exercise) => exercise.completed)
       .length, // Sample data, replace with data from your reducer
     appointmentsCompleted: appointments.filter(
-      (appointment) => !appointment.completed
+      (appointment) => appointment.completed
     ).length, // Sample data, replace with data from your reducer
+  };
+
+  const handleLogout = () => {
+    navigation.navigate("Login"); // Replace "Login" with the name of your Login route if it's different.
   };
 
   return (
@@ -42,10 +46,10 @@ const OverviewScreen = ({ navigation }: any) => {
         <Text style={styles.detailText}>Alder: {userProfile.age}</Text>
         <Text style={styles.detailText}>Diagnose: {userProfile.diagnosis}</Text>
         <Text style={styles.statText}>
-          Øvelser fullført: {userProfile.exercisesCompleted}
+          Øvelser: {userProfile.exercisesCompleted}/{exercises.length}
         </Text>
         <Text style={styles.statText}>
-          Avtaler: {userProfile.appointmentsCompleted}
+          Avtaler: {userProfile.appointmentsCompleted}/{appointments.length}
         </Text>
       </View>
 
@@ -61,6 +65,9 @@ const OverviewScreen = ({ navigation }: any) => {
           </TouchableOpacity>
         )}
       />
+      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+        <Text style={styles.logoutButtonText}>Logg ut</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -112,6 +119,21 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   listItemText: {
+    fontSize: 18,
+    color: "#333",
+  },
+  logoutButton: {
+    position: "absolute", // Position the button absolutely to the parent View
+    bottom: 20, // Position at the bottom with a margin of 20
+    left: 20, // Left margin of 20
+    right: 20, // Right margin of 20
+    backgroundColor: "#f98987",
+    padding: 15,
+    borderRadius: 8,
+    alignItems: "center",
+    elevation: 2,
+  },
+  logoutButtonText: {
     fontSize: 18,
     color: "#333",
   },

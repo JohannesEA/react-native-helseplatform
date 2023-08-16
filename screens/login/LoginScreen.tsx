@@ -1,5 +1,14 @@
 import React from "react";
-import { View, TextInput, Button, StyleSheet, Alert, Text } from "react-native";
+import {
+  Text,
+  TextInput,
+  Alert,
+  StyleSheet,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  Image,
+} from "react-native";
 
 function LoginScreen({ navigation }) {
   const [username, setUsername] = React.useState("");
@@ -17,27 +26,33 @@ function LoginScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.loginContainer}>
-      <Text style={styles.title}>Psychelia</Text>
+    <KeyboardAvoidingView
+      style={styles.loginContainer}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <Image
+        source={require("../../assets/logo/logo.png")}
+        style={styles.logo}
+      />
       <TextInput
         style={styles.input}
-        placeholder="Username"
+        placeholder="Brukernavn"
         value={username}
         onChangeText={setUsername}
         placeholderTextColor="#aaa"
       />
       <TextInput
         style={styles.input}
-        placeholder="Password"
+        placeholder="Passord"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
         placeholderTextColor="#aaa"
       />
-      <View style={styles.buttonContainer}>
-        <Button title="Logg inn" color="#4A90E2" onPress={handleLogin} />
-      </View>
-    </View>
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text style={styles.buttonText}>Logg inn</Text>
+      </TouchableOpacity>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -48,12 +63,11 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#F4F6F9",
   },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    color: "#4A90E2",
+  logo: {
+    width: 150,
+    height: 150,
+    alignSelf: "center",
     marginBottom: 30,
-    textAlign: "center",
   },
   input: {
     borderWidth: 1,
@@ -66,8 +80,15 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "#FFF",
   },
-  buttonContainer: {
-    marginTop: 10,
+  button: {
+    backgroundColor: "#4A90E2",
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "#FFF",
+    fontSize: 18,
   },
 });
 
