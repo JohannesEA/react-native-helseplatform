@@ -79,7 +79,7 @@ const AppointmentScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f4f4f8",
+    backgroundColor: "#023059",
     padding: 20,
   },
   title: {
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
-    color: "#333",
+    color: "#f4f4f8",
   },
   listItem: {
     backgroundColor: "#fff",

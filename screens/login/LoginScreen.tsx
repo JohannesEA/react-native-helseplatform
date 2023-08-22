@@ -2,27 +2,30 @@ import React from "react";
 import {
   Text,
   TextInput,
-  Alert,
   StyleSheet,
   TouchableOpacity,
   KeyboardAvoidingView,
   Platform,
   Image,
 } from "react-native";
+import { useDispatch } from "react-redux";
+import { loginUserAction } from "../../redux/actions/userActions";
 
 function LoginScreen({ navigation }) {
+  const dispatch = useDispatch();
+
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const handleLogin = () => {
-    if (
-      username.toLowerCase() === "test" &&
-      password.toLowerCase() === "test"
-    ) {
-      navigation.replace("Oversikt");
-    } else {
-      Alert.alert("Error", "Invalid username or password");
-    }
+    const credentials = {
+      name: "Ola Normann",
+      age: 33,
+      diagnosis: "Psykose",
+      username: username,
+      password: password,
+    };
+    loginUserAction(credentials, dispatch);
   };
 
   return (
@@ -61,13 +64,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 20,
-    backgroundColor: "#F4F6F9",
+    backgroundColor: "#023059",
   },
   logo: {
     width: 150,
     height: 150,
     alignSelf: "center",
     marginBottom: 30,
+    borderRadius: 100,
   },
   input: {
     borderWidth: 1,

@@ -57,7 +57,7 @@ const PsykoseSymptomScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f4f4f8",
+    backgroundColor: "#023059",
     padding: 20,
   },
   title: {
@@ -65,14 +65,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
-    color: "#333",
+    color: "#f4f4f8",
   },
   text: {
     fontSize: 16,
     marginBottom: 20,
     textAlign: "center",
     lineHeight: 24,
-    color: "#555",
+    color: "#f4f4f8",
   },
   list: {
     marginTop: 20,

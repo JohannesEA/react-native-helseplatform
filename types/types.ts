@@ -24,6 +24,21 @@ export interface IExercise {
   error: Error | undefined;
 }
 
+export interface UserDTO {
+  name: string;
+  age: number;
+  diagnosis: string;
+  username: string;
+  password: string;
+}
+
+export interface IUser {
+  user: UserDTO | undefined;
+  status: RestStatus;
+  error: Error | undefined;
+  isAuthenticated: boolean;
+}
+
 export enum RestStatus {
   IDLE = "idle",
   SUCCESS = "success",

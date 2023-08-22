@@ -9,10 +9,12 @@ import {
 } from "react-native";
 import { Avatar } from "react-native-paper";
 import { exercisesSelector } from "../../redux/selectors/exercisesSelector";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { appointmentsSelector } from "../../redux/selectors/appointmentsSelector";
+import { logOutUserAction } from "../../redux/actions/userActions";
 
 const OverviewScreen = ({ navigation }: any) => {
+  const dispatch = useDispatch();
   const data = ["Symptomer", "Hjemmeoppgaver", "Avtaler", "Inboks"];
   const { exercises } = useSelector(exercisesSelector);
   const { appointments } = useSelector(appointmentsSelector);
@@ -30,7 +32,7 @@ const OverviewScreen = ({ navigation }: any) => {
   };
 
   const handleLogout = () => {
-    navigation.navigate("Login"); // Replace "Login" with the name of your Login route if it's different.
+    logOutUserAction(dispatch);
   };
 
   return (
@@ -75,7 +77,7 @@ const OverviewScreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#023059",
     padding: 20,
   },
   profileContainer: {
@@ -95,17 +97,20 @@ const styles = StyleSheet.create({
     height: 80,
   },
   nameText: {
+    color: "#f4f4f8",
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 10,
     alignSelf: "center",
   },
   detailText: {
+    color: "#f4f4f8",
     fontSize: 18,
     marginBottom: 5,
     alignSelf: "center",
   },
   statText: {
+    color: "#f4f4f8",
     fontSize: 16,
     marginTop: 10,
     alignSelf: "center",

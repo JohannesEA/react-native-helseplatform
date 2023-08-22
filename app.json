@@ -1,19 +1,18 @@
 {
   "expo": {
-    "name": "HelseOversikt",
+    "name": "Psychelia",
     "slug": "HelseOversikt",
+    "description": "Psychelia er en app som skal gjøre det enklere for pasienter å følge sin behandling.",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assers/logo/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logo/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.johannesea.HelseOversikt"
