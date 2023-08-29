@@ -77,9 +77,9 @@ const AuthenticatedStack = () => {
         options={{ title: "Avtaler", ...commonHeaderOptions }}
       />
       <Stack.Screen
-        name="Inboks"
+        name="Innboks"
         component={InboxScreen}
-        options={{ title: "Inboks", ...commonHeaderOptions }}
+        options={{ title: "Innboks", ...commonHeaderOptions }}
       />
       <Stack.Screen
         name="Behandler"

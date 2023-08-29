@@ -22,7 +22,7 @@ const OverviewScreen = ({ navigation }: any) => {
     "Symptomer",
     "Hjemmeoppgaver",
     "Avtaler",
-    "Inboks",
+    "Innboks",
   ];
   const { exercises } = useSelector(exercisesSelector);
   const { appointments } = useSelector(appointmentsSelector);
@@ -57,6 +57,7 @@ const OverviewScreen = ({ navigation }: any) => {
           size={100}
           source={require("../../assets/images/user.png")}
         />
+        <Text style={styles.userName}>{userProfile.name}</Text>
         <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
           <Text style={styles.logoutButtonText}>Logg ut</Text>
         </TouchableOpacity>
@@ -130,6 +131,12 @@ const styles = StyleSheet.create({
   listItemText: {
     fontSize: 18,
     color: "#333",
+  },
+  userName: {
+    fontSize: 18,
+    color: "#fff",
+    flex: 1,
+    textAlign: "center",
   },
 });
 
