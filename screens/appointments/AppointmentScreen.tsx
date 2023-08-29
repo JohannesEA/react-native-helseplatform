@@ -17,8 +17,14 @@ import {
 
 const AppointmentScreen = () => {
   const dispatch = useDispatch();
-  const { appointments, status, error } = useSelector(appointmentsSelector);
+  const { appointments } = useSelector(appointmentsSelector);
   const [modalVisible, setModalVisible] = React.useState(false);
+  const [nextAppointment, setNextAppointment] = React.useState({
+    with: "psykolog Kristoffer Land",
+    date: "30.08.23",
+    time: "09:00",
+    plan: "Plan for timen er å fortsette med eksponeringsøvelser.",
+  });
 
   const handleAppointmentToggle = (id: string) => {
     const appointmentToToggle: AppointmentDTO = appointments.find(
@@ -48,6 +54,13 @@ const AppointmentScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Avtaleliste</Text>
+      <View style={styles.nextAppointmentContainer}>
+        <Text style={styles.nextAppointmentTitle}>Din neste time</Text>
+        <Text style={styles.nextAppointmentText}>
+          Din neste time er med {nextAppointment.with} {nextAppointment.date}{" "}
+          klokken {nextAppointment.time}. {nextAppointment.plan}
+        </Text>
+      </View>
       <FlatList
         data={appointments}
         keyExtractor={(item) => item.id}
@@ -134,6 +147,23 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 20,
     fontSize: 16,
+  },
+  nextAppointmentContainer: {
+    padding: 15,
+    backgroundColor: "#fff",
+    borderRadius: 8,
+    marginBottom: 20,
+    elevation: 2,
+  },
+  nextAppointmentTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 5,
+    color: "#333",
+  },
+  nextAppointmentText: {
+    fontSize: 16,
+    color: "#555",
   },
 });
 
