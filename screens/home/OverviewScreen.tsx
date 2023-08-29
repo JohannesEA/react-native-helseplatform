@@ -23,7 +23,7 @@ const OverviewScreen = ({ navigation }: any) => {
   const userProfile = {
     name: "Ola Normann",
     age: 32,
-    diagnosis: "Psykose",
+    diagnosis: "Depresjon",
     exercisesCompleted: exercises.filter((exercise) => exercise.completed)
       .length, // Sample data, replace with data from your reducer
     appointmentsCompleted: appointments.filter(

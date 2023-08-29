@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     elevation: 2, // for Android shadow
   },
   completed: {
-    backgroundColor: "#A8E6CF", // a light green color for completed appointments
+    backgroundColor: "#7CFC00", // a light green color for completed appointments
   },
   listItemTitle: {
     fontSize: 18,

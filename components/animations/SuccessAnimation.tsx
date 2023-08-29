@@ -10,7 +10,7 @@ const SuccessAnimation = () => {
         loop={true}
         resizeMode="cover" // This ensures the animation covers its container
         style={styles.lottieAnimation}
-        source={require("../../assets/animations/successAnimation2.json")}
+        source={require("../../assets/animations/successAnimation.json")}
       />
     </View>
   );

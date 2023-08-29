@@ -5,48 +5,42 @@ import {
   StyleSheet,
   FlatList,
   TouchableOpacity,
+  Modal,
 } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { exercisesSelector } from "../../redux/selectors/exercisesSelector";
+import { putExerciseAction } from "../../redux/actions/exercisesActions";
 
-const PsykoseSymptomScreen = ({ navigation }: any) => {
-  const symptoms = [
-    {
-      id: "1",
-      name: "Følelse av håpløshet",
-      description:
-        "En overveldende følelse av tomhet, mørke og fremtidsløshet.",
-    },
-    {
-      id: "2",
-      name: "Mangel på interesse",
-      description:
-        "Tap av interesse eller glede ved aktiviteter som tidligere var gledesfylte.",
-    },
-    {
-      id: "3",
-      name: "Kronisk tretthet",
-      description: "Følelse av å være fysisk og mentalt utmattet hele tiden.",
-    },
-  ];
+const SymptomDetailsScreen = () => {
+  const { exercises } = useSelector(exercisesSelector);
+  const dispatch = useDispatch();
+
+  const handleExerciseToggle = (exercise) => {
+    const toggledExercise = {
+      ...exercise,
+      completed: !exercise.completed,
+    };
+    putExerciseAction(toggledExercise, dispatch);
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Depresjon</Text>
+      <Text style={styles.title}>Øvelser for Depresjon</Text>
       <Text style={styles.text}>
-        Depresjon er en psykisk lidelse som påvirker hvordan du føler, tenker og
-        handler. Symptomer på depresjon kan inkludere følelser av tristhet eller
-        håpløshet, tap av interesse eller glede av aktiviteter, og
-        vanskeligheter med å tenke, konsentrere seg eller ta beslutninger. Det
-        er viktig å søke profesjonell behandling ved tegn på depresjon.
+        Disse øvelsene kan hjelpe deg med å få kontroll på depresjonssymptomene
+        dine.
       </Text>
-      <Text style={styles.title}>Symptomer på depresjon</Text>
       <FlatList
         style={styles.list}
-        data={symptoms}
+        data={exercises}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <TouchableOpacity
-            style={styles.listItem}
-            onPress={() => navigation.navigate("Symptomovelser")}
+            style={[
+              styles.listItem,
+              { backgroundColor: item.completed ? "#7CFC00" : "#fff" },
+            ]}
+            onPress={() => handleExerciseToggle(item)}
           >
             <Text style={styles.listItemTitle}>{item.name}</Text>
             <Text style={styles.listItemText}>{item.description}</Text>
@@ -81,7 +75,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   listItem: {
-    backgroundColor: "#fff",
     padding: 15,
     borderRadius: 8,
     marginBottom: 10,
@@ -99,4 +92,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PsykoseSymptomScreen;
+export default SymptomDetailsScreen;

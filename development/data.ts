@@ -20,24 +20,25 @@ export const APPOINTMENTS: AppointmentDTO[] = [
     completed: false,
   },
 ];
-
 export const EXERCISES: ExerciseDTO[] = [
   {
     id: "1",
-    name: "Dyp pust",
-    description: "Gjør dette i 10 minutter daglig.",
+    name: "Daglig Takk",
+    description: "Skriv ned tre ting du er takknemlig for hver dag.",
     completed: false,
   },
   {
     id: "2",
-    name: "Progressiv muskelavslapning",
-    description: "15 minutter daglig.",
+    name: "Lett mosjon",
+    description:
+      "Gå en tur i frisk luft eller gjør lett trening i minst 30 minutter daglig.",
     completed: false,
   },
   {
     id: "3",
-    name: "Mindfulness-meditasjon",
-    description: "20 minutter daglig.",
+    name: "Meditasjon",
+    description:
+      "Prøv mindfulness eller guidet meditasjon i 20 minutter daglig.",
     completed: false,
   },
 ];

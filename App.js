@@ -13,6 +13,7 @@ import AppointmentScreen from "./screens/appointments/AppointmentScreen";
 import LoginScreen from "./screens/login/LoginScreen";
 import InboxScreen from "./screens/inbox/InboxScreen";
 import { userSelector } from "./redux/selectors/userSelector";
+import SymptomDetailsScreen from "./screens/symptoms/SymptomDetailsScreen";
 
 // ... other imports ...
 
@@ -58,6 +59,11 @@ const AuthenticatedStack = () => {
         name="Symptomer"
         component={PsykoseSymptomScreen}
         options={{ title: "Symptomer", ...commonHeaderOptions }}
+      />
+      <Stack.Screen
+        name="Symptomovelser"
+        component={SymptomDetailsScreen}
+        options={{ title: "Øvelser", ...commonHeaderOptions }}
       />
       <Stack.Screen
         name="Hjemmeoppgaver"

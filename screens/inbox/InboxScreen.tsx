@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   read: {
-    backgroundColor: "#A8E6CF", // a light gray color for read messages
+    backgroundColor: "#7CFC00", // a light gray color for read messages
   },
   listItemTitle: {
     fontSize: 18,
