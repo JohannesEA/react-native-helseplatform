@@ -5,19 +5,34 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
-  Image,
+  ScrollView,
 } from "react-native";
 import { Avatar } from "react-native-paper";
 import { exercisesSelector } from "../../redux/selectors/exercisesSelector";
 import { useDispatch, useSelector } from "react-redux";
 import { appointmentsSelector } from "../../redux/selectors/appointmentsSelector";
 import { logOutUserAction } from "../../redux/actions/userActions";
+import NextAppointment from "../../components/NextAppointment";
+import ProfileStats from "../../components/ProfileStats";
 
 const OverviewScreen = ({ navigation }: any) => {
   const dispatch = useDispatch();
-  const data = ["Symptomer", "Hjemmeoppgaver", "Avtaler", "Inboks"];
+  const data = [
+    "Behandler",
+    "Symptomer",
+    "Hjemmeoppgaver",
+    "Avtaler",
+    "Inboks",
+  ];
   const { exercises } = useSelector(exercisesSelector);
   const { appointments } = useSelector(appointmentsSelector);
+
+  const [nextAppointment, setNextAppointment] = React.useState({
+    with: "psykolog Kristoffer Land",
+    date: "30.08.23",
+    time: "09:00",
+    plan: "Plan for timen er å fortsette med eksponeringsøvelser.",
+  });
 
   // Sample profile data
   const userProfile = {
@@ -37,39 +52,41 @@ const OverviewScreen = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.profileContainer}>
-        <View style={styles.imageContainer}>
-          <Avatar.Image
-            size={100}
-            source={require("../../assets/images/user.png")}
-          />
-        </View>
-        <Text style={styles.nameText}>{userProfile.name}</Text>
-        <Text style={styles.detailText}>Alder: {userProfile.age}</Text>
-        <Text style={styles.detailText}>Diagnose: {userProfile.diagnosis}</Text>
-        <Text style={styles.statText}>
-          Øvelser: {userProfile.exercisesCompleted}/{exercises.length}
-        </Text>
-        <Text style={styles.statText}>
-          Avtaler: {userProfile.appointmentsCompleted}/{appointments.length}
-        </Text>
+      <View style={styles.header}>
+        <Avatar.Image
+          size={100}
+          source={require("../../assets/images/user.png")}
+        />
+        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+          <Text style={styles.logoutButtonText}>Logg ut</Text>
+        </TouchableOpacity>
       </View>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.profileContainer}>
+          <ProfileStats
+            age={userProfile.age}
+            diagnosis={userProfile.diagnosis}
+            exercisesCompleted={userProfile.exercisesCompleted}
+            exercisesTotal={exercises.length}
+            appointmentsCompleted={userProfile.appointmentsCompleted}
+            appointmentsTotal={appointments.length}
+          />
+          <NextAppointment appointment={nextAppointment} />
+        </View>
 
-      <FlatList
-        data={data}
-        keyExtractor={(item) => item}
-        renderItem={({ item: boxTitle }) => (
-          <TouchableOpacity
-            style={styles.listItem}
-            onPress={() => navigation.navigate(boxTitle)}
-          >
-            <Text style={styles.listItemText}>{boxTitle}</Text>
-          </TouchableOpacity>
-        )}
-      />
-      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-        <Text style={styles.logoutButtonText}>Logg ut</Text>
-      </TouchableOpacity>
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item}
+          renderItem={({ item: boxTitle }) => (
+            <TouchableOpacity
+              style={styles.listItem}
+              onPress={() => navigation.navigate(boxTitle)}
+            >
+              <Text style={styles.listItemText}>{boxTitle}</Text>
+            </TouchableOpacity>
+          )}
+        />
+      </ScrollView>
     </View>
   );
 };
@@ -80,40 +97,27 @@ const styles = StyleSheet.create({
     backgroundColor: "#023059",
     padding: 20,
   },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 20,
+  },
   profileContainer: {
     marginBottom: 20,
   },
-  imageContainer: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "center", // To center the image in the profileContainer
-    marginBottom: 20,
+  scrollView: {
+    flex: 1,
   },
-  profileImage: {
-    width: 80,
-    height: 80,
+  logoutButton: {
+    backgroundColor: "#f98987",
+    padding: 10,
+    borderRadius: 8,
+    elevation: 2,
   },
-  nameText: {
-    color: "#f4f4f8",
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 10,
-    alignSelf: "center",
-  },
-  detailText: {
-    color: "#f4f4f8",
-    fontSize: 18,
-    marginBottom: 5,
-    alignSelf: "center",
-  },
-  statText: {
-    color: "#f4f4f8",
+  logoutButtonText: {
     fontSize: 16,
-    marginTop: 10,
-    alignSelf: "center",
+    color: "#333",
   },
   listItem: {
     backgroundColor: "#f4f4f8",
@@ -124,21 +128,6 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   listItemText: {
-    fontSize: 18,
-    color: "#333",
-  },
-  logoutButton: {
-    position: "absolute", // Position the button absolutely to the parent View
-    bottom: 20, // Position at the bottom with a margin of 20
-    left: 20, // Left margin of 20
-    right: 20, // Right margin of 20
-    backgroundColor: "#f98987",
-    padding: 15,
-    borderRadius: 8,
-    alignItems: "center",
-    elevation: 2,
-  },
-  logoutButtonText: {
     fontSize: 18,
     color: "#333",
   },

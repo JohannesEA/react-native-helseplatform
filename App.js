@@ -14,6 +14,7 @@ import LoginScreen from "./screens/login/LoginScreen";
 import InboxScreen from "./screens/inbox/InboxScreen";
 import { userSelector } from "./redux/selectors/userSelector";
 import SymptomDetailsScreen from "./screens/symptoms/SymptomDetailsScreen";
+import TherapistScreen from "./screens/therapist/TherapistScreen";
 
 // ... other imports ...
 
@@ -79,6 +80,11 @@ const AuthenticatedStack = () => {
         name="Inboks"
         component={InboxScreen}
         options={{ title: "Inboks", ...commonHeaderOptions }}
+      />
+      <Stack.Screen
+        name="Behandler"
+        component={TherapistScreen}
+        options={{ title: "Min behandler", ...commonHeaderOptions }}
       />
     </Stack.Navigator>
   );
