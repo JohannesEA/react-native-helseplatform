@@ -33,7 +33,7 @@ const HomeExerciseScreen = () => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Hjemmeøvelser for psykose</Text>
+      <Text style={styles.title}>Hjemmeøvelser for depresjon</Text>
       <FlatList
         data={exercises}
         keyExtractor={(item) => item.id}

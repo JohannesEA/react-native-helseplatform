@@ -21,7 +21,7 @@ function LoginScreen({ navigation }) {
     const credentials = {
       name: "Ola Normann",
       age: 33,
-      diagnosis: "Psykose",
+      diagnosis: "Depresjon",
       username: username,
       password: password,
     };
